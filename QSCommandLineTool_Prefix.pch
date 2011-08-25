@@ -7,6 +7,3 @@
     #import <AddressBook/AddressBook.h>
 	#import <QSCore/QSCore.h>
 #endif
-
-
-#define kToolIsInstalled @"QSCommandLineToolInstalled"
