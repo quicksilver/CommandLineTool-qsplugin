@@ -20,11 +20,11 @@
 	return [QSResourceManager imageNamed:@"ExecutableBinaryIcon"];
 }
 
-- (NSImage *) paneName{
+- (NSString *) paneName{
 	return @"CL Tool";
 }
 
-- (NSImage *) paneDescription{
+- (NSString *) paneDescription{
 	return @"Configure the Command Line Tool";
 }
 

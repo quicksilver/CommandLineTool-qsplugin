@@ -7,7 +7,8 @@
 //
 
 #import <QSCore/QSObject.h>
-#import "QSCommandLineTool.h"
+
+#define kToolIsInstalled @"QSCommandLineToolInstalled"
 
 @interface QSCommandLineTool : NSObject{
     NSConnection *commandLineConnection;

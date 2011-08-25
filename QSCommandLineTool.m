@@ -54,8 +54,8 @@
 }
 
 - (void)handleArguments:(NSArray *)arguments input:(NSData *)input directory:(NSString *)directory{
-	if (VERBOSE) 
-		NSLog(@"recieved: %@\rArguments:%@\rInput:%@\rPath:%@\r",self,[arguments description],input,directory);
+//	if (DEBUG) 
+//		NSLog(@"recieved: %@\rArguments:%@\rInput:%@\rPath:%@\r",self,[arguments description],input,directory);
 	
 	
 	NSString *options=nil;
@@ -69,7 +69,7 @@
 	}
 	
 	if (input){
-		NSString *string=[[[NSString alloc]initWithData:input encoding:nil]autorelease];
+		NSString *string=[[[NSString alloc]initWithData:input encoding:NSUTF8StringEncoding] autorelease];
 		object=[QSObject objectWithString:string];
 	}else{
 		int i;

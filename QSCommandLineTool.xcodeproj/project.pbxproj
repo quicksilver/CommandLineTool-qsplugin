@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 42;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -224,8 +224,12 @@
 /* Begin PBXProject section */
 		0259C573FE90428111CA0C5A /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
 			buildConfigurationList = 7F07AF8E085E432D00E2AFC4 /* Build configuration list for PBXProject "QSCommandLineTool" */;
-			compatibilityVersion = "Xcode 2.4";
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
 				English,
@@ -327,6 +331,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 14E61B5510CFE069007663EE /* QSPlugIn_Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				COPY_PHASE_STRIP = YES;
 				PRODUCT_NAME = "Command Line Tool";
 				ZERO_LINK = NO;
@@ -337,6 +342,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 14E61B5710CFE069007663EE /* Release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 			};
 			name = Release;
 		};
