@@ -1,8 +1,5 @@
-
-
 #import <Foundation/Foundation.h>
 #import <PreferencePanes/PreferencePanes.h>
-
 
 @interface QSCommandLineToolPrefPane : NSPreferencePane {
     IBOutlet NSButton *toolInstallButton;
