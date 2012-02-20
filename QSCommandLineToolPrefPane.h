@@ -8,7 +8,6 @@
     IBOutlet NSImageView *toolImageView;
 }
 
-- (BOOL)toolIsInstalled;
 - (IBAction)installCommandLineTool:(id)sender;
 
 

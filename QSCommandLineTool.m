@@ -24,16 +24,20 @@
     }
     return _sharedInstance;
 }
-- (void)checkForTool{
-	NSFileManager *manager=[NSFileManager defaultManager];
-	if ([manager fileExistsAtPath:@"/usr/bin/qs"]){
+
+- (void)checkForTool
+{
+	NSFileManager *manager = [NSFileManager defaultManager];
+	NSString *currentPath = [[NSBundle bundleForClass:[self class]]pathForResource:@"qs" ofType:@""];
+	NSString *installedPath = @"/usr/bin/qs";
+	if ([manager fileExistsAtPath:installedPath] && [manager contentsEqualAtPath:currentPath andPath:installedPath]) {
 		[self performSelectorOnMainThread:@selector(startToolConnection) withObject:nil waitUntilDone:NO];
-	}else if ([[NSUserDefaults standardUserDefaults] boolForKey:kToolIsInstalled]){
-		NSRunInformationalAlertPanel([NSString stringWithFormat:@"Tool is missing",nil],@"The command line tool was not found. It can be reinstalled from the general preferences window.",@"OK", nil,nil);
+	} else if ([[NSUserDefaults standardUserDefaults] boolForKey:kToolIsInstalled]) {
+		// TODO this prevents the menubar icon from appearing until the next clean launch
+		NSRunInformationalAlertPanel([NSString stringWithFormat:@"Tool is missing", nil], @"The command line tool was not found, or is out of date. It can be reinstalled from the general preferences window.", @"OK", nil, nil);
 		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kToolIsInstalled];
 	}
 }
-
 
 - (void)startToolConnection{
 	if (commandLineConnection) return;
