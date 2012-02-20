@@ -12,8 +12,8 @@ Select multiple files:
 
 Select text:
 
-    echo -n example | qs
-    echo -n "example with multiple words" | qs
+    echo example | qs
+    echo "example with multiple words" | qs
     whoami | qs
     pbpaste | qs
 

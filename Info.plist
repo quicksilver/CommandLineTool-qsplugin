@@ -49,8 +49,8 @@ qs *.pdf
 
 &lt;p&gt;Select text:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;echo -n example | qs
-echo -n &quot;example with multiple words&quot; | qs
+&lt;pre&gt;&lt;code&gt;echo example | qs
+echo &quot;example with multiple words&quot; | qs
 whoami | qs
 pbpaste | qs
 &lt;/code&gt;&lt;/pre&gt;

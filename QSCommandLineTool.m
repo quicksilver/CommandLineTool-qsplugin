@@ -70,6 +70,7 @@
 	
 	if (input){
 		NSString *string=[[[NSString alloc]initWithData:input encoding:NSUTF8StringEncoding] autorelease];
+		string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		object=[QSObject objectWithString:string];
 	}else{
 		int i;
