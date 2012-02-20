@@ -92,8 +92,10 @@
 		[[QSReg getClassInstance:@"QSShelfController"]addObject:object atIndex:0];
 	}else{
 		if (object){
-			[[QSReg preferredCommandInterface] selectObject:object];
-			[[QSReg preferredCommandInterface] activate:self];
+			QSInterfaceController *controller = [QSReg preferredCommandInterface];
+			[controller clearObjectView:[controller dSelector]];
+			[controller selectObject:object];
+			[controller activate:self];
 		}		
 	}
 }
