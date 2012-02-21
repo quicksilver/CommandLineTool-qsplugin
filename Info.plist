@@ -57,7 +57,7 @@ pbpaste | qs
 
 &lt;p&gt;Note that when you pipe text to &lt;code&gt;qs&lt;/code&gt;, the same smarts apply that you would get when typing text by hand. URLs, file paths, etc. are automatically recognized and the appropriate action will be displayed in Quicksilver&amp;#8217;s interface.&lt;/p&gt;
 
-&lt;p&gt;To send an item to the Shelf instead of selecting it, use the &lt;code&gt;-s&lt;/code&gt; or &lt;code&gt;--shelf&lt;/code&gt; option.&lt;/p&gt;
+&lt;p&gt;To send an item to the Shelf instead of selecting it, use the &lt;code&gt;-s&lt;/code&gt; option.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;qs -s ~/Documents/MyMainProject
 &lt;/code&gt;&lt;/pre&gt;</string>

@@ -19,6 +19,6 @@ Select text:
 
 Note that when you pipe text to `qs`, the same smarts apply that you would get when typing text by hand. URLs, file paths, etc. are automatically recognized and the appropriate action will be displayed in Quicksilver's interface.
 
-To send an item to the Shelf instead of selecting it, use the `-s` or `--shelf` option.
+To send an item to the Shelf instead of selecting it, use the `-s` option.
 
     qs -s ~/Documents/MyMainProject
