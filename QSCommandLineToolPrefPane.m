@@ -9,9 +9,13 @@
 
 
 @implementation QSCommandLineToolPrefPane
+
+@synthesize toolCanBeInstalled;
+
 - (id)init {
     self = [super initWithBundle:[NSBundle bundleForClass:[QSCommandLineToolPrefPane class]]];
     if (self) {
+		[self setToolCanBeInstalled:YES];
     }
     return self;
 }
@@ -45,6 +49,7 @@
 	if ([manager fileExistsAtPath:installedPath]) {
 		if ([manager contentsEqualAtPath:currentPath andPath:installedPath]) {
 			[toolInstallStatus setStringValue:@"Installed"];
+			[self setToolCanBeInstalled:NO];
 		} else {
 			[toolInstallStatus setStringValue:@"Out of Date"];
 		}
