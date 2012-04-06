@@ -13,6 +13,7 @@
 		7FDB7FD40AA8C77900CCE360 /* QSInterface.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDB7FD00AA8C77900CCE360 /* QSInterface.framework */; };
 		7FEF1FFC07D4EE74005BC984 /* qs-usage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7FEF1FFB07D4EE74005BC984 /* qs-usage.txt */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
+		D43F70C9152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = D43F70C8152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib */; };
 		E1C4F01006B865C600FA8819 /* qs.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C4F00006B8655D00FA8819 /* qs.m */; };
 		E1C4F01106B865D700FA8819 /* qs in Resources */ = {isa = PBXBuildFile; fileRef = E1C4F00A06B8659500FA8819 /* qs */; };
 		E1C4F01E06B867F100FA8819 /* QSCommandLineToolPrefPane.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C4F01C06B867F100FA8819 /* QSCommandLineToolPrefPane.m */; };
@@ -20,7 +21,6 @@
 		E1C4F0B306B86E5F00FA8819 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C4F0B206B86E5F00FA8819 /* PreferencePanes.framework */; };
 		E1C4F0B406B86E8200FA8819 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		E1C4F0D106B86EF000FA8819 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1C4F0CF06B86EF000FA8819 /* Localizable.strings */; };
-		E1C4F29D06B8B75200FA8819 /* QSCommandLineToolPrefPane.nib in Resources */ = {isa = PBXBuildFile; fileRef = E1C4F29C06B8B75200FA8819 /* QSCommandLineToolPrefPane.nib */; };
 		E1EAB046068128A200774DFF /* QSCommandLineTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EAB045068128A200774DFF /* QSCommandLineTool.m */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +51,7 @@
 		7FEF1FFB07D4EE74005BC984 /* qs-usage.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "qs-usage.txt"; sourceTree = "<group>"; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1AC9740486D14A00FE50C9 /* Command Line Tool.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Command Line Tool.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D43F70C8152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSCommandLineToolPrefPane.xib; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E1C4F00006B8655D00FA8819 /* qs.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = qs.m; sourceTree = "<group>"; };
 		E1C4F00A06B8659500FA8819 /* qs */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = qs; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,7 +60,6 @@
 		E1C4F07006B86DBB00FA8819 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		E1C4F0B206B86E5F00FA8819 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
 		E1C4F0D006B86EF000FA8819 /* en */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		E1C4F29C06B8B75200FA8819 /* QSCommandLineToolPrefPane.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = QSCommandLineToolPrefPane.nib; sourceTree = "<group>"; };
 		E1EAB045068128A200774DFF /* QSCommandLineTool.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSCommandLineTool.m; sourceTree = "<group>"; };
 		E1EAB047068128A800774DFF /* QSCommandLineTool.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSCommandLineTool.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,8 +107,8 @@
 		0259C582FE90428111CA0C5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D43F70C8152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib */,
 				7FEF1FFB07D4EE74005BC984 /* qs-usage.txt */,
-				E1C4F29C06B8B75200FA8819 /* QSCommandLineToolPrefPane.nib */,
 				E1C4F0CF06B86EF000FA8819 /* Localizable.strings */,
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
 			);
@@ -225,7 +225,7 @@
 		0259C573FE90428111CA0C5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = 7F07AF8E085E432D00E2AFC4 /* Build configuration list for PBXProject "QSCommandLineTool" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -254,9 +254,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1C4F01106B865D700FA8819 /* qs in Resources */,
-				E1C4F29D06B8B75200FA8819 /* QSCommandLineToolPrefPane.nib in Resources */,
 				E1C4F0D106B86EF000FA8819 /* Localizable.strings in Resources */,
 				7FEF1FFC07D4EE74005BC984 /* qs-usage.txt in Resources */,
+				D43F70C9152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

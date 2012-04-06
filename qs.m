@@ -35,8 +35,9 @@ int main (int argc, const char * argv[]) {
 			[arguments addObject:[NSString stringWithUTF8String:argv[i]]];
 		}
 		
-		// If last argument is a dash or no arguments, read stdin and provide
-		if (argc==1 || !strcmp(argv[argc-1],"-")){
+		// If last argument begins with (or is a) dash, read stdin and provide
+		if (argc == 1 || argv[argc-1][0] == '-')
+		{
 			//fprintf(stderr,"%s\r",[usageText UTF8String]);
 			NSFileHandle * fhandle = [NSFileHandle fileHandleWithStandardInput];
 			input = [fhandle readDataToEndOfFile];
