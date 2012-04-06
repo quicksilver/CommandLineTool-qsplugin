@@ -53,7 +53,7 @@
 				<nil key="NSUserInterfaceItemIdentifier"/>
 				<string key="NSWindowContentMinSize">{213, 107}</string>
 				<object class="NSView" key="NSWindowView" id="585073224">
-					<reference key="NSNextResponder"/>
+					<nil key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<array class="NSMutableArray" key="NSSubviews">
 						<object class="NSBox" id="430013536">
@@ -69,7 +69,6 @@
 											<int key="NSvFlags">257</int>
 											<string key="NSFrame">{{242, 5}, {78, 32}}</string>
 											<reference key="NSSuperview" ref="852490639"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="774360327"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSButtonCell" key="NSCell" id="709568236">
@@ -98,7 +97,6 @@
 											<int key="NSvFlags">258</int>
 											<string key="NSFrame">{{19, 15}, {220, 14}}</string>
 											<reference key="NSSuperview" ref="852490639"/>
-											<reference key="NSWindow"/>
 											<reference key="NSNextKeyView" ref="82092825"/>
 											<bool key="NSEnabled">YES</bool>
 											<object class="NSTextFieldCell" key="NSCell" id="240100949">
@@ -134,13 +132,11 @@
 									</array>
 									<string key="NSFrame">{{2, 2}, {328, 42}}</string>
 									<reference key="NSSuperview" ref="430013536"/>
-									<reference key="NSWindow"/>
 									<reference key="NSNextKeyView" ref="455401150"/>
 								</object>
 							</array>
 							<string key="NSFrame">{{17, 124}, {332, 59}}</string>
 							<reference key="NSSuperview" ref="585073224"/>
-							<reference key="NSWindow"/>
 							<reference key="NSNextKeyView" ref="852490639"/>
 							<string key="NSOffsets">{0, 0}</string>
 							<object class="NSTextFieldCell" key="NSTitleCell">
@@ -173,8 +169,6 @@
 							<int key="NSvFlags">264</int>
 							<string key="NSFrame">{{36, 16}, {306, 98}}</string>
 							<reference key="NSSuperview" ref="585073224"/>
-							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView"/>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSTextFieldCell" key="NSCell" id="190844006">
 								<int key="NSCellFlags">67239424</int>
@@ -197,8 +191,6 @@ bHAiIGZyb20gdGhlIGNvbW1hbmQgbGluZSBmb3IgbW9yZSBpbmZvcm1hdGlvbi4KA</string>
 						</object>
 					</array>
 					<string key="NSFrameSize">{366, 194}</string>
-					<reference key="NSSuperview"/>
-					<reference key="NSWindow"/>
 					<reference key="NSNextKeyView" ref="430013536"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
