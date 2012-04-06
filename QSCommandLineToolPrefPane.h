@@ -1,14 +1,15 @@
 #import <Foundation/Foundation.h>
 #import <PreferencePanes/PreferencePanes.h>
 
-@interface QSCommandLineToolPrefPane : NSPreferencePane {
+@interface QSCommandLineToolPrefPane : QSPreferencePane {
     IBOutlet NSButton *toolInstallButton;
     IBOutlet NSTextField *toolInstallStatus;
+    BOOL toolCanBeInstalled;
 	
     IBOutlet NSImageView *toolImageView;
 }
+@property BOOL toolCanBeInstalled;
 
-- (BOOL)toolIsInstalled;
 - (IBAction)installCommandLineTool:(id)sender;
 
 

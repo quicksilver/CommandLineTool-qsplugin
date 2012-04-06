@@ -9,9 +9,13 @@
 
 
 @implementation QSCommandLineToolPrefPane
+
+@synthesize toolCanBeInstalled;
+
 - (id)init {
     self = [super initWithBundle:[NSBundle bundleForClass:[QSCommandLineToolPrefPane class]]];
     if (self) {
+		[self setToolCanBeInstalled:YES];
     }
     return self;
 }
@@ -39,7 +43,19 @@
 }
 
 - (void) populateFields{
-	[toolInstallStatus setStringValue:([self toolIsInstalled]?@"Installed":@"Not installed")];
+	NSFileManager *manager = [NSFileManager defaultManager];
+	NSString *currentPath = [[NSBundle bundleForClass:[self class]]pathForResource:@"qs" ofType:@""];
+	NSString *installedPath = @"/usr/bin/qs";
+	if ([manager fileExistsAtPath:installedPath]) {
+		if ([manager contentsEqualAtPath:currentPath andPath:installedPath]) {
+			[toolInstallStatus setStringValue:@"Installed"];
+			[self setToolCanBeInstalled:NO];
+		} else {
+			[toolInstallStatus setStringValue:@"Out of Date"];
+		}
+	} else {
+		[toolInstallStatus setStringValue:@"Not Installed"];
+	}
 }
 
 
@@ -50,11 +66,6 @@
 		[[QSCommandLineTool sharedInstance]startToolConnection];
 		[self populateFields];
 	}	
-}
-
-- (BOOL)toolIsInstalled{
-    NSFileManager *manager=[NSFileManager defaultManager];
-    return [manager fileExistsAtPath:@"/usr/bin/qs"];
 }
 
 - (IBAction)installCommandLineTool:(id)sender{
