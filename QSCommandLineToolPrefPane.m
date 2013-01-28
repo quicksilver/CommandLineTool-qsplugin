@@ -40,6 +40,7 @@
 - (void)mainViewDidLoad{
 	[self populateFields];
 	[toolImageView setImage:[self paneIcon]];
+    [super mainViewDidLoad];
 }
 
 - (void) populateFields{
