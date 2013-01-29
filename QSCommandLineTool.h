@@ -6,8 +6,6 @@
 //  Copyright __MyCompanyName__ 2004. All rights reserved.
 //
 
-#import <QSCore/QSObject.h>
-
 #define kToolIsInstalled @"QSCommandLineToolInstalled"
 
 @interface QSCommandLineTool : NSObject{

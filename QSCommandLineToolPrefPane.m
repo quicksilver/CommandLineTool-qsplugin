@@ -2,7 +2,6 @@
 
 #import "QSCommandLineToolPrefPane.h"
 #import "QSCommandLineTool.h"
-#import <QSCore/QSResourceManager.h>
 
 #include <Security/Authorization.h>
 #include <Security/AuthorizationTags.h>
@@ -103,7 +102,7 @@
             
             {
                 char myToolPath[] = "/bin/cp";
-                char *myArguments[] = {(char *)[toolPath cString],"/usr/bin", NULL };
+                char *myArguments[] = {(char *)[toolPath UTF8String],"/usr/bin", NULL };
                 FILE *myCommunicationsPipe = NULL;
                 char myReadBuffer[128];
                 
