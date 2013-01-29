@@ -41,7 +41,7 @@
 
 - (void)startToolConnection{
 	if (commandLineConnection) return;
-	commandLineConnection=[NSConnection defaultConnection];
+	commandLineConnection=[NSConnection new];
 	[commandLineConnection registerName:@"Quicksilver Command Line Tool"];
 	[commandLineConnection setRootObject:self];
 }
@@ -77,7 +77,7 @@
 		string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		object=[QSObject objectWithString:string];
 	}else{
-		int i;
+		NSUInteger i;
 		NSMutableArray *filenames=[NSMutableArray arrayWithCapacity:[arguments count]-1];
 		NSFileManager *manager=[NSFileManager defaultManager];
 		//NSLog(currentPath);
@@ -94,7 +94,7 @@
 	
 	
 	if ([options isEqualToString:@"-s"]){
-		[[QSReg getClassInstance:@"QSShelfController"]addObject:object atIndex:0];
+		[[QSReg getClassInstance:@"QSShelfController"] addObject:object atIndex:0];
 	}else{
 		if (object){
 			QSInterfaceController *controller = [QSReg preferredCommandInterface];
@@ -110,7 +110,11 @@
 
 - (NSString *)usageText{
 	NSString *usageFile=[[NSBundle bundleForClass:[self class]]pathForResource:@"qs-usage" ofType:@"txt"];
-	NSMutableString *usageText=[NSMutableString stringWithContentsOfFile:usageFile];
+    NSError *err = nil;
+	NSMutableString *usageText=[NSMutableString stringWithContentsOfFile:usageFile usedEncoding:nil error:&err];
+    if (err != nil) {
+        NSLog(@"Error loading command line tool usage text: %@",err);
+    }
 	
 	
 	//[usageText appendFormat:@"\nTriggers: %@",[[NSArray array]description]];

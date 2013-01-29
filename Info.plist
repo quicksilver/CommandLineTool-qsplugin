@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.6.2</string>
+	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>45</string>
+	<string>48</string>
 	<key>NSPrincipalClass</key>
 	<string>QSCommandLineTool</string>
 	<key>QSLoadImmediately</key>
@@ -35,31 +35,22 @@
 		<string>Allows data to be piped into Quicksilver from the command line</string>
 		<key>extendedDescription</key>
 		<string>&lt;p&gt;The &lt;code&gt;qs&lt;/code&gt; command allows you to select files or text in Quicksilver (or send them to the Shelf) from the command line.&lt;/p&gt;
-
 &lt;p&gt;Select a file:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;qs MyFile.jpg
 qs ~/Documents
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Select multiple files:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;qs file1.txt file2.txt
 qs *.pdf
 &lt;/code&gt;&lt;/pre&gt;
-
 &lt;p&gt;Select text:&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;echo example | qs
 echo &quot;example with multiple words&quot; | qs
 whoami | qs
 pbpaste | qs
 &lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Note that when you pipe text to &lt;code&gt;qs&lt;/code&gt;, the same smarts apply that you would get when typing text by hand. URLs, file paths, etc. are automatically recognized and the appropriate action will be displayed in Quicksilver&amp;#8217;s interface.&lt;/p&gt;
-
+&lt;p&gt;Note that when you pipe text to &lt;code&gt;qs&lt;/code&gt;, the same smarts apply that you would get when typing text by hand. URLs, file paths, etc. are automatically recognized and the appropriate action will be displayed in Quicksilver&apos;s interface.&lt;/p&gt;
 &lt;p&gt;To send an item to the Shelf instead of selecting it, use the &lt;code&gt;-s&lt;/code&gt; option.&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;qs -s ~/Documents/MyMainProject
 &lt;/code&gt;&lt;/pre&gt;</string>
 		<key>icon</key>
