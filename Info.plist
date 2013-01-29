@@ -11,7 +11,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Command Line Tool (qs)</string>
+	<string>Command Line Tool</string>
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
@@ -29,6 +29,7 @@
 		<key>categories</key>
 		<array>
 			<string>Development</string>
+			<string>Quicksilver</string>
 		</array>
 		<key>description</key>
 		<string>Allows data to be piped into Quicksilver from the command line</string>
