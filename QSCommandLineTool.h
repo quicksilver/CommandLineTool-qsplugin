@@ -7,8 +7,9 @@
 //
 
 #define kToolIsInstalled @"QSCommandLineToolInstalled"
+#import "QSCommandLineToolProtocol.h"
 
-@interface QSCommandLineTool : NSObject{
+@interface QSCommandLineTool : NSObject <QSCommandLineTool> {
     NSConnection *commandLineConnection;
 }
 
@@ -16,5 +17,6 @@
 
 - (void)checkForTool;
 - (void)startToolConnection;
+
 @end
 

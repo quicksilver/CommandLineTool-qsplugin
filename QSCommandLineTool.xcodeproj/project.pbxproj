@@ -11,6 +11,9 @@
 		7FDB7FD30AA8C77900CCE360 /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FDB7FCF0AA8C77900CCE360 /* QSFoundation.framework */; };
 		7FEF1FFC07D4EE74005BC984 /* qs-usage.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7FEF1FFB07D4EE74005BC984 /* qs-usage.txt */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
+		CD10F667174BB81400A1C2E5 /* QSCLStartupDialog.xib in Resources */ = {isa = PBXBuildFile; fileRef = CD10F666174BB81400A1C2E5 /* QSCLStartupDialog.xib */; };
+		CD10F66E174BB8C300A1C2E5 /* QSCLStartupDialogWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CD10F66C174BB8C300A1C2E5 /* QSCLStartupDialogWindowController.m */; };
+		CD10F671174BBC1900A1C2E5 /* Exec.icns in Resources */ = {isa = PBXBuildFile; fileRef = CD10F670174BBC1900A1C2E5 /* Exec.icns */; };
 		D43F70C9152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib in Resources */ = {isa = PBXBuildFile; fileRef = D43F70C8152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib */; };
 		E1C4F01006B865C600FA8819 /* qs.m in Sources */ = {isa = PBXBuildFile; fileRef = E1C4F00006B8655D00FA8819 /* qs.m */; };
 		E1C4F01106B865D700FA8819 /* qs in Resources */ = {isa = PBXBuildFile; fileRef = E1C4F00A06B8659500FA8819 /* qs */; };
@@ -43,6 +46,11 @@
 		7FEF1FFB07D4EE74005BC984 /* qs-usage.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "qs-usage.txt"; sourceTree = "<group>"; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1AC9740486D14A00FE50C9 /* Command Line Tool.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Command Line Tool.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CD10F665174BB1DD00A1C2E5 /* QSCommandLineToolProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSCommandLineToolProtocol.h; sourceTree = "<group>"; };
+		CD10F666174BB81400A1C2E5 /* QSCLStartupDialog.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSCLStartupDialog.xib; sourceTree = "<group>"; };
+		CD10F66B174BB8C300A1C2E5 /* QSCLStartupDialogWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSCLStartupDialogWindowController.h; sourceTree = "<group>"; };
+		CD10F66C174BB8C300A1C2E5 /* QSCLStartupDialogWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSCLStartupDialogWindowController.m; sourceTree = "<group>"; };
+		CD10F670174BBC1900A1C2E5 /* Exec.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Exec.icns; sourceTree = "<group>"; };
 		D43F70C8152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QSCommandLineToolPrefPane.xib; sourceTree = "<group>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		E1C4F00006B8655D00FA8819 /* qs.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = qs.m; sourceTree = "<group>"; };
@@ -96,6 +104,8 @@
 		0259C582FE90428111CA0C5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CD10F670174BBC1900A1C2E5 /* Exec.icns */,
+				CD10F666174BB81400A1C2E5 /* QSCLStartupDialog.xib */,
 				D43F70C8152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib */,
 				7FEF1FFB07D4EE74005BC984 /* qs-usage.txt */,
 				E1C4F0CF06B86EF000FA8819 /* Localizable.strings */,
@@ -141,11 +151,14 @@
 		32DBCF9E0370C38000C91783 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				E1C4F00006B8655D00FA8819 /* qs.m */,
 				E1EAB047068128A800774DFF /* QSCommandLineTool.h */,
 				E1EAB045068128A200774DFF /* QSCommandLineTool.m */,
-				E1C4F00006B8655D00FA8819 /* qs.m */,
 				E1C4F01B06B867F100FA8819 /* QSCommandLineToolPrefPane.h */,
 				E1C4F01C06B867F100FA8819 /* QSCommandLineToolPrefPane.m */,
+				CD10F665174BB1DD00A1C2E5 /* QSCommandLineToolProtocol.h */,
+				CD10F66B174BB8C300A1C2E5 /* QSCLStartupDialogWindowController.h */,
+				CD10F66C174BB8C300A1C2E5 /* QSCLStartupDialogWindowController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -234,6 +247,8 @@
 				E1C4F0D106B86EF000FA8819 /* Localizable.strings in Resources */,
 				7FEF1FFC07D4EE74005BC984 /* qs-usage.txt in Resources */,
 				D43F70C9152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib in Resources */,
+				CD10F667174BB81400A1C2E5 /* QSCLStartupDialog.xib in Resources */,
+				CD10F671174BBC1900A1C2E5 /* Exec.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +278,7 @@
 			files = (
 				E1EAB046068128A200774DFF /* QSCommandLineTool.m in Sources */,
 				E1C4F01E06B867F100FA8819 /* QSCommandLineToolPrefPane.m in Sources */,
+				CD10F66E174BB8C300A1C2E5 /* QSCLStartupDialogWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

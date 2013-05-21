@@ -1,11 +1,6 @@
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
-
-
-@protocol QSCommandLineTool
-- (void)handleArguments:(NSArray *)array input:(NSData *)input directory:(NSString *)directory;
-- (NSString *)usageText;
-@end
+#import "QSCommandLineToolProtocol.h"
 
 int main (int argc, const char * argv[]) {
     NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
@@ -13,28 +8,21 @@ int main (int argc, const char * argv[]) {
     id proxy=[NSConnection rootProxyForConnectionWithRegisteredName:@"Quicksilver Command Line Tool" host:nil];
     if (proxy){
 		[proxy setProtocolForProxy:@protocol(QSCommandLineTool)];
-
-	
+        
+        NSArray *args = [[NSProcessInfo processInfo] arguments];
 		// If help requested, print usage
-		if ( argc==2 && (!strcmp(argv[1],"-h") || !strcmp(argv[1],"-?") || !strcmp(argv[1],"--help"))){
+		if ([args containsObject:@"-h"] || [args containsObject:@"-?"] || [args containsObject:@"--help"]) {
 			NSString *usageText=[proxy usageText];
 			fprintf(stderr,"%s\n",[usageText UTF8String]);
 			return 0;
 		}
 		
-		NSMutableArray *arguments=[NSMutableArray arrayWithCapacity:argc];
 		NSData *input=nil;
 		
 		// Get CWD
-		NSFileManager *manager=[NSFileManager defaultManager];
-		NSString *directory=[manager currentDirectoryPath];		
-		
-		// Convert arguments to NSArray
-		int i;
-		for(i=0;i<argc;i++){
-			[arguments addObject:[NSString stringWithUTF8String:argv[i]]];
-		}
-		
+		NSFileManager *manager=[[NSFileManager alloc] init];
+		NSString *directory= [manager currentDirectoryPath];
+        NSLog(@"A");
 		// If last argument begins with (or is a) dash, read stdin and provide
 		if (argc == 1 || argv[argc-1][0] == '-')
 		{
@@ -42,11 +30,9 @@ int main (int argc, const char * argv[]) {
 			NSFileHandle * fhandle = [NSFileHandle fileHandleWithStandardInput];
 			input = [fhandle readDataToEndOfFile];
 		}
-		
-	
-		
+
 		// Send data to Quicksilver
-		[proxy handleArguments:arguments input:input directory:directory];
+		[proxy handleArguments:[args objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [args count]-1)]] input:input directory:directory];
 		
     }else{	
 		fprintf(stderr,"Unable to connect to Quicksilver\n");

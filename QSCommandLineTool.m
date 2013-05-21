@@ -7,6 +7,7 @@
 //
 
 #import "QSCommandLineTool.h"
+#import "QSCLStartupDialogWindowController.h"
 
 @implementation QSCommandLineTool
 
@@ -32,10 +33,12 @@
 	NSString *installedPath = @"/usr/bin/qs";
 	if ([manager fileExistsAtPath:installedPath] && [manager contentsEqualAtPath:currentPath andPath:installedPath]) {
 		[self performSelectorOnMainThread:@selector(startToolConnection) withObject:nil waitUntilDone:NO];
-	} else if ([[NSUserDefaults standardUserDefaults] boolForKey:kToolIsInstalled]) {
-		// TODO this prevents the menubar icon from appearing until the next clean launch
-		NSRunInformationalAlertPanel([NSString stringWithFormat:@"Tool is missing", nil], @"The command line tool was not found, or is out of date. It can be reinstalled from the general preferences window.", @"OK", nil, nil);
-		[[NSUserDefaults standardUserDefaults] setBool:NO forKey:kToolIsInstalled];
+	} else {
+        NSString *statusText = [manager fileExistsAtPath:installedPath] ? NSLocalizedStringFromTableInBundle(@"The command line tool was not found. It can be installed from the Command Line Tool preferences window.", nil, [NSBundle bundleForClass:[self class]], @"Message displayed when the command line tool is not installed") : NSLocalizedStringFromTableInBundle(@"The command line tool is out of date. It can be updated from the Command Line Tool preferences window.", nil, [NSBundle bundleForClass:[self class]], @"Message displayed when the command line tool is out of date");
+		QSCLStartupDialogWindowController *wc = [[QSCLStartupDialogWindowController alloc] initWithStatus:statusText];
+        
+        [wc showWindow:nil];
+        [[NSUserDefaults standardUserDefaults] setBool:NO forKey:kToolIsInstalled];
 	}
 }
 
@@ -63,13 +66,14 @@
 	
 	
 	NSString *options=nil;
-	if([arguments count]>1)
-		options=[arguments objectAtIndex:1];
-	int firstFilename=1;
+	if([arguments count] > 1) {
+		options= [arguments objectAtIndex:1];
+    }
+	NSUInteger firstFilename=0;
 	
 	QSObject *object=nil;
 	if ([options hasPrefix:@"-"]){
-		firstFilename=2;
+		firstFilename=1;
 	}
 	
 	if (input){
@@ -77,19 +81,24 @@
 		string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		object=[QSObject objectWithString:string];
 	}else{
-		NSUInteger i;
-		NSMutableArray *filenames=[NSMutableArray arrayWithCapacity:[arguments count]-1];
+		NSMutableArray *filenames=[NSMutableArray array];
+        NSMutableArray *stringobjs = [NSMutableArray array];
 		NSFileManager *manager=[NSFileManager defaultManager];
 		//NSLog(currentPath);
-		for (i=firstFilename;i<[arguments count];i++){
-			NSString *currentFile=[[arguments objectAtIndex:i]stringByStandardizingPath];
-			if (![currentFile hasPrefix:@"/"])
-				currentFile=[[directory stringByAppendingPathComponent:currentFile]stringByStandardizingPath];
-			if ([manager fileExistsAtPath:currentFile isDirectory:nil])
-				[filenames addObject:currentFile];
-		} 
+		for (NSUInteger i=firstFilename;i<[arguments count];i++){
+			NSString *currentString=[[arguments objectAtIndex:i] stringByStandardizingPath];
+            NSString *fileString = currentString;
+			if (![currentString hasPrefix:@"/"])
+				fileString = [[directory stringByAppendingPathComponent:currentString]stringByStandardizingPath];
+			if ([manager fileExistsAtPath:fileString isDirectory:nil]) {
+				[filenames addObject:fileString];
+            } else {
+                // treat it as a string instead
+                [stringobjs addObject:[QSObject objectWithString:currentString]];
+            }
+		}
 		//NSLog(@"%@",filenames);
-		object=[QSObject fileObjectWithArray:filenames];
+		object= [QSObject objectByMergingObjects:stringobjs withObject:[QSObject objectByMergingObjects:[QSObject fileObjectsWithPathArray:filenames]]];
 	}
 	
 	
