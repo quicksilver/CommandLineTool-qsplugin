@@ -80,7 +80,7 @@
 		NSString *string=[[[NSString alloc]initWithData:input encoding:NSUTF8StringEncoding] autorelease];
 		string = [string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 		object=[QSObject objectWithString:string];
-	}else{
+    } else if (![arguments containsObject:@"-b"]) {
 		NSMutableArray *filenames=[NSMutableArray array];
         NSMutableArray *stringobjs = [NSMutableArray array];
 		NSFileManager *manager=[NSFileManager defaultManager];
@@ -98,19 +98,25 @@
             }
 		}
 		//NSLog(@"%@",filenames);
-		object= [QSObject objectByMergingObjects:stringobjs withObject:[QSObject objectByMergingObjects:[QSObject fileObjectsWithPathArray:filenames]]];
+        if ([stringobjs count]) {
+            if ([filenames count]) {
+                object= [QSObject objectByMergingObjects:stringobjs withObject:[QSObject objectByMergingObjects:[QSObject fileObjectsWithPathArray:filenames]]];
+            } else {
+                object = [QSObject objectByMergingObjects:stringobjs];
+            }
+        } else {
+            object = [QSObject fileObjectWithArray:filenames];
+        }
 	}
 	
 	
 	if ([options isEqualToString:@"-s"]){
 		[[QSReg getClassInstance:@"QSShelfController"] addObject:object atIndex:0];
 	}else{
-		if (object){
-			QSInterfaceController *controller = [QSReg preferredCommandInterface];
-			[controller clearObjectView:[controller dSelector]];
-			[controller selectObject:object];
-			[controller activate:self];
-		}		
+        QSInterfaceController *controller = [QSReg preferredCommandInterface];
+        [controller clearObjectView:[controller dSelector]];
+        [controller selectObject:object];
+        [controller activate:self];
 	}
 }
 

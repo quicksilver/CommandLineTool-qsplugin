@@ -1,4 +1,5 @@
 usage: qs [-s] file
  -s					send to shelf
+ -b                 open Quicksilver with a blank interface (no object selected)
  file				file to select or - to read from stdin
  

@@ -22,10 +22,11 @@ int main (int argc, const char * argv[]) {
 		// Get CWD
 		NSFileManager *manager=[[NSFileManager alloc] init];
 		NSString *directory= [manager currentDirectoryPath];
-        NSLog(@"A");
-		// If last argument begins with (or is a) dash, read stdin and provide
-		if (argc == 1 || argv[argc-1][0] == '-')
+        NSLog(@"%@",[NSString stringWithUTF8String:argv[argc-1]]);
+		// If last argument begins with (or is a) dash but isn't -b, read stdin and provide
+		if (argc == 1 || (argv[argc-1][0] == '-' && strcmp(argv[argc-1], "-b")))
 		{
+            NSLog(@"std");
 			//fprintf(stderr,"%s\r",[usageText UTF8String]);
 			NSFileHandle * fhandle = [NSFileHandle fileHandleWithStandardInput];
 			input = [fhandle readDataToEndOfFile];
