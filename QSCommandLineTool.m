@@ -51,12 +51,12 @@
 
 
 - (BOOL)putOnShelfFromPasteboard:(NSPasteboard *)pboard{
-	[[NSApp delegate]putOnShelfFromPasteboard:pboard];
+	[[NSApp delegate] putOnShelfFromPasteboard:pboard];
 	return YES;
 }
 
 - (BOOL)readSelectionFromPasteboard:(NSPasteboard *)pboard{
-	[[NSApp delegate]readSelectionFromPasteboard:pboard];
+	[[NSApp delegate] readSelectionFromPasteboard:pboard];
 	return YES;
 }
 
