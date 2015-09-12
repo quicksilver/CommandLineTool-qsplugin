@@ -15,9 +15,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>1.1.0</string>
 	<key>CFBundleVersion</key>
-	<string>49</string>
+	<string>4B</string>
 	<key>NSPrincipalClass</key>
 	<string>QSCommandLineTool</string>
 	<key>QSLoadImmediately</key>
@@ -74,6 +74,11 @@ pbpaste | qs
 				<string>Command Line Tool</string>
 			</dict>
 		</dict>
+	</dict>
+	<key>QSRequirements</key>
+	<dict>
+		<key>version</key>
+		<string>4012</string>
 	</dict>
 </dict>
 </plist>
