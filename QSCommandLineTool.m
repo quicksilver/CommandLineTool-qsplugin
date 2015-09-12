@@ -30,7 +30,7 @@
 {
 	NSFileManager *manager = [NSFileManager defaultManager];
 	NSString *currentPath = [[NSBundle bundleForClass:[self class]]pathForResource:@"qs" ofType:@""];
-	NSString *installedPath = @"/usr/bin/qs";
+	NSString *installedPath = @"/usr/local/bin/qs";
 	if ([manager fileExistsAtPath:installedPath] && [manager contentsEqualAtPath:currentPath andPath:installedPath]) {
 		[self performSelectorOnMainThread:@selector(startToolConnection) withObject:nil waitUntilDone:NO];
 	} else {

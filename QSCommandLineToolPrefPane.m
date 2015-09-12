@@ -45,7 +45,7 @@
 - (void) populateFields{
 	NSFileManager *manager = [NSFileManager defaultManager];
 	NSString *currentPath = [[NSBundle bundleForClass:[self class]]pathForResource:@"qs" ofType:@""];
-	NSString *installedPath = @"/usr/bin/qs";
+	NSString *installedPath = @"/usr/local/bin/qs";
 	if ([manager fileExistsAtPath:installedPath]) {
 		if ([manager contentsEqualAtPath:currentPath andPath:installedPath]) {
 			[toolInstallStatus setStringValue:@"Installed"];
@@ -68,66 +68,59 @@
 	}	
 }
 
-- (IBAction)installCommandLineTool:(id)sender{
-    NSFileManager *manager=[NSFileManager defaultManager];
-    NSString *toolPath=[[NSBundle bundleForClass:[self class]]pathForResource:@"qs" ofType:@""];
-    if ([manager fileExistsAtPath:@"/usr/bin/qs"])
-		
-		NSLog(@"%@", toolPath);    
-    
-    OSStatus myStatus;
-    AuthorizationFlags myFlags = kAuthorizationFlagDefaults;                //1
-    AuthorizationRef myAuthorizationRef;             //2
-    
-    myStatus = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment,             //3
-                                   myFlags, &myAuthorizationRef);               //4
-    if (myStatus != errAuthorizationSuccess)
-        return;// myStatus;
-        
-        do 
-        {
-        {
-            AuthorizationItem myItems = {kAuthorizationRightExecute, 0,             //5
-                NULL, 0};                //6
-            AuthorizationRights myRights = {1, &myItems};            //7
-            
-            myFlags = kAuthorizationFlagDefaults |           //8
-                kAuthorizationFlagInteractionAllowed |           //9
-                kAuthorizationFlagPreAuthorize |         //10
-                kAuthorizationFlagExtendRights;         //11
-            myStatus = AuthorizationCopyRights (myAuthorizationRef,                     &myRights, NULL, myFlags, NULL );           //12
-        }
-            
-            if (myStatus != errAuthorizationSuccess) break;
-            
-            {
-                char myToolPath[] = "/bin/cp";
-                char *myArguments[] = {(char *)[toolPath UTF8String],"/usr/bin", NULL };
-                FILE *myCommunicationsPipe = NULL;
-                char myReadBuffer[128];
-                
-                myFlags = kAuthorizationFlagDefaults;             //13
-                myStatus = AuthorizationExecuteWithPrivileges           //14
-                    (myAuthorizationRef, myToolPath, myFlags, myArguments,          //15
-                     &myCommunicationsPipe);         //16
-                
-                if (myStatus == errAuthorizationSuccess)
-                    for(;;)
-                    {
-                        int bytesRead = read (fileno (myCommunicationsPipe),
-                                              myReadBuffer, sizeof (myReadBuffer));
-                        if (bytesRead < 1) break;
-                        write (fileno (stdout), myReadBuffer, bytesRead);
-                    }
-            }
-        } while (0);
-            
-            AuthorizationFree (myAuthorizationRef, kAuthorizationFlagDefaults);                //17
-            
-            // if (myStatus) printf("Status: %i\n", myStatus);
-            return ;//myStatus;
-}
+- (IBAction)installCommandLineTool:(id)sender
+{
+    NSString *installPath = @"/usr/local/bin";
+    NSString *toolName = @"qs";
+    NSFileManager *manager = [NSFileManager defaultManager];
+    NSString *toolPath = [[NSBundle bundleForClass:[self class]] pathForResource:toolName ofType:@""];
+    if ([manager isWritableFileAtPath:installPath]) {
+        NSString *qstool = [installPath stringByAppendingPathComponent:toolName];
+        [manager copyItemAtPath:toolPath toPath:qstool error:nil];
+        return;
+    }
 
+    OSStatus myStatus;
+    AuthorizationFlags myFlags = kAuthorizationFlagDefaults;
+    AuthorizationRef myAuthorizationRef;
+    myStatus = AuthorizationCreate(NULL, kAuthorizationEmptyEnvironment, myFlags, &myAuthorizationRef);
+    if (myStatus != errAuthorizationSuccess) {
+        return;
+    }
+    
+    do {
+        AuthorizationItem myItems = {kAuthorizationRightExecute, 0, NULL, 0};
+        AuthorizationRights myRights = {1, &myItems};
+        myFlags = kAuthorizationFlagDefaults |
+            kAuthorizationFlagInteractionAllowed |
+            kAuthorizationFlagPreAuthorize |
+            kAuthorizationFlagExtendRights;
+        myStatus = AuthorizationCopyRights(myAuthorizationRef, &myRights, NULL, myFlags, NULL);
+        
+        if (myStatus != errAuthorizationSuccess) break;
+        
+        char *mkdirArgs[] = {"-p", (char *)[installPath UTF8String], NULL};
+        AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/bin/mkdir", kAuthorizationFlagDefaults, mkdirArgs, NULL);
+        char *myArguments[] = {(char *)[toolPath UTF8String], (char *)[installPath UTF8String], NULL};
+        char myReadBuffer[128];
+        
+        myFlags = kAuthorizationFlagDefaults;
+        FILE *myCommunicationsPipe = NULL;
+        myStatus = AuthorizationExecuteWithPrivileges(myAuthorizationRef, "/bin/cp", myFlags, myArguments, &myCommunicationsPipe);
+
+        if (myStatus == errAuthorizationSuccess)
+            for(;;)
+            {
+                ssize_t bytesRead = read (fileno (myCommunicationsPipe),
+                                      myReadBuffer, sizeof (myReadBuffer));
+                if (bytesRead < 1) break;
+                write (fileno (stdout), myReadBuffer, bytesRead);
+            }
+    } while (0);
+            
+            AuthorizationFree (myAuthorizationRef, kAuthorizationFlagDefaults);
+            return;
+}
 
 @end
 
