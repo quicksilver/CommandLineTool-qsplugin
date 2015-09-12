@@ -46,15 +46,17 @@
 	NSFileManager *manager = [NSFileManager defaultManager];
 	NSString *currentPath = [[NSBundle bundleForClass:[self class]]pathForResource:@"qs" ofType:@""];
 	NSString *installedPath = @"/usr/local/bin/qs";
+    NSString *status = [NSString stringWithFormat:@"Installed: %@", installedPath];
 	if ([manager fileExistsAtPath:installedPath]) {
 		if ([manager contentsEqualAtPath:currentPath andPath:installedPath]) {
-			[toolInstallStatus setStringValue:@"Installed"];
+			[toolInstallStatus setStringValue:status];
 			[self setToolCanBeInstalled:NO];
 		} else {
 			[toolInstallStatus setStringValue:@"Out of Date"];
 		}
 	} else {
-		[toolInstallStatus setStringValue:@"Not Installed"];
+        status = [NSString stringWithFormat:@"Not Installed: %@", installedPath];
+		[toolInstallStatus setStringValue:status];
 	}
 }
 
