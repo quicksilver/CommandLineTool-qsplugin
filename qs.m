@@ -36,7 +36,7 @@ int main (int argc, const char * argv[]) {
 		[proxy handleArguments:[args objectsAtIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(1, [args count]-1)]] input:input directory:directory];
 		
     }else{	
-		fprintf(stderr,"Unable to connect to Quicksilver\n");
+		fprintf(stderr,"Unable to connect to Quicksilver.\nMake sure the Command Line Tool plug-in is enabled.\n");
 		return 1;
     }    
     
