@@ -78,7 +78,7 @@ pbpaste | qs
 	<key>QSRequirements</key>
 	<dict>
 		<key>version</key>
-		<string>4012</string>
+		<string>4018</string>
 	</dict>
 </dict>
 </plist>

@@ -115,7 +115,7 @@
 	}else{
         QSInterfaceController *controller = [QSReg preferredCommandInterface];
         [controller clearObjectView:[controller dSelector]];
-        [controller selectObject:object];
+		[[controller dSelector] redisplayObjectValue:object];
         [controller activate:self];
 	}
 }
