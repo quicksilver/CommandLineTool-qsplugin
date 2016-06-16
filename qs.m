@@ -13,7 +13,7 @@ int main (int argc, const char * argv[]) {
 		// If help requested, print usage
 		if ([args containsObject:@"-h"] || [args containsObject:@"-?"] || [args containsObject:@"--help"]) {
 			NSString *usageText=[proxy usageText];
-			fprintf(stderr,"%s\n",[usageText UTF8String]);
+			fprintf(stderr,"%s",[usageText UTF8String]);
 			return 0;
 		}
 		
