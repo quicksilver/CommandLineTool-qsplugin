@@ -6,8 +6,6 @@
 //
 //
 
-#import <Cocoa/Cocoa.h>
-
 @interface QSCLStartupDialogWindowController : NSWindowController {
     IBOutlet NSTextField *statusLabel;
     NSString *statusText;

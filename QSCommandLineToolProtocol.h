@@ -6,8 +6,6 @@
 //
 //
 
-#import <Foundation/Foundation.h>
-
 @protocol QSCommandLineTool <NSObject>
 - (void)handleArguments:(NSArray *)array input:(NSData *)input directory:(NSString *)directory;
 - (NSString *)usageText;

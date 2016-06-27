@@ -1,5 +1,3 @@
-#import <Cocoa/Cocoa.h>
-#import <Foundation/Foundation.h>
 #import "QSCommandLineToolProtocol.h"
 
 int main (int argc, const char * argv[]) {

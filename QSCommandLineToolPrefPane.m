@@ -1,5 +1,3 @@
-
-
 #import "QSCommandLineToolPrefPane.h"
 #import "QSCommandLineTool.h"
 
