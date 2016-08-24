@@ -76,6 +76,7 @@
     NSString *toolPath = [[NSBundle bundleForClass:[self class]] pathForResource:toolName ofType:@""];
     if ([manager isWritableFileAtPath:installPath]) {
         NSString *qstool = [installPath stringByAppendingPathComponent:toolName];
+		[manager trashItemAtURL:[NSURL fileURLWithPath:qstool] resultingItemURL:nil error:nil];
         [manager copyItemAtPath:toolPath toPath:qstool error:nil];
         return;
     }
