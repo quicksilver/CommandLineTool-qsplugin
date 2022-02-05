@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -21,7 +21,6 @@
 		E1C4F07106B86DBB00FA8819 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C4F07006B86DBB00FA8819 /* Security.framework */; };
 		E1C4F0B306B86E5F00FA8819 /* PreferencePanes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C4F0B206B86E5F00FA8819 /* PreferencePanes.framework */; };
 		E1C4F0B406B86E8200FA8819 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
-		E1C4F0D106B86EF000FA8819 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = E1C4F0CF06B86EF000FA8819 /* Localizable.strings */; };
 		E1EAB046068128A200774DFF /* QSCommandLineTool.m in Sources */ = {isa = PBXBuildFile; fileRef = E1EAB045068128A200774DFF /* QSCommandLineTool.m */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +59,6 @@
 		E1C4F01C06B867F100FA8819 /* QSCommandLineToolPrefPane.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSCommandLineToolPrefPane.m; sourceTree = "<group>"; };
 		E1C4F07006B86DBB00FA8819 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = /System/Library/Frameworks/Security.framework; sourceTree = "<absolute>"; };
 		E1C4F0B206B86E5F00FA8819 /* PreferencePanes.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PreferencePanes.framework; path = /System/Library/Frameworks/PreferencePanes.framework; sourceTree = "<absolute>"; };
-		E1C4F0D006B86EF000FA8819 /* en */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		E1EAB045068128A200774DFF /* QSCommandLineTool.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSCommandLineTool.m; sourceTree = "<group>"; };
 		E1EAB047068128A800774DFF /* QSCommandLineTool.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSCommandLineTool.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,7 +106,6 @@
 				CD10F666174BB81400A1C2E5 /* QSCLStartupDialog.xib */,
 				D43F70C8152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib */,
 				7FEF1FFB07D4EE74005BC984 /* qs-usage.txt */,
-				E1C4F0CF06B86EF000FA8819 /* Localizable.strings */,
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
 			);
 			name = Resources;
@@ -171,7 +168,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F07AF8A085E432D00E2AFC4 /* Build configuration list for PBXNativeTarget "Command Line Tool" */;
 			buildPhases = (
-				7F4ADEE9096F38B600C9B950 /* Update Version and Documentation */,
 				8D1AC9660486D14A00FE50C9 /* Resources */,
 				8D1AC96A0486D14A00FE50C9 /* Sources */,
 				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
@@ -212,7 +208,7 @@
 				LastUpgradeCheck = 0450;
 			};
 			buildConfigurationList = 7F07AF8E085E432D00E2AFC4 /* Build configuration list for PBXProject "QSCommandLineTool" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -238,7 +234,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E1C4F01106B865D700FA8819 /* qs in Resources */,
-				E1C4F0D106B86EF000FA8819 /* Localizable.strings in Resources */,
 				7FEF1FFC07D4EE74005BC984 /* qs-usage.txt in Resources */,
 				D43F70C9152F2D2B00D54CDE /* QSCommandLineToolPrefPane.xib in Resources */,
 				CD10F667174BB81400A1C2E5 /* QSCLStartupDialog.xib in Resources */,
@@ -247,23 +242,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		7F4ADEE9096F38B600C9B950 /* Update Version and Documentation */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update Version and Documentation";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "\"$QS_BUILD_ROOT/Tools/bltrversion\"";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8D1AC96A0486D14A00FE50C9 /* Sources */ = {
@@ -293,17 +271,6 @@
 			targetProxy = 7FEF1EB707D4C725005BC984 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		E1C4F0CF06B86EF000FA8819 /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1C4F0D006B86EF000FA8819 /* en */,
-			);
-			name = Localizable.strings;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7F07AF88085E432D00E2AFC4 /* Release */ = {
